@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "../Button/Button";
+import Button from "../common/Button/Button";
 import Logo from "../Logo/Logo";
 import styles from "./Navbar.module.css";
 import Search from "../Search/Search";
