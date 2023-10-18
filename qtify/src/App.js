@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import Navbar from "./components/Navbar/Navbar";
 import "./index.css";
 import Hero from "./components/HeroSection/Hero";
-import { fetchTopAlbums } from "./apis/api";
-import Card from "./components/common/Card/Card";
-import CategoryHeading from "./components/common/CategoryHeading/CategoryHeading";
+import { fetchNewAlbums, fetchTopAlbums } from "./apis/api";
+import Section from "./components/common/Section/Section";
+
 function App() {
   const [topAlbums, setTopAlbums] = useState([]);
+  const [newAlbums, setNewAlbums] = useState([]);
 
   const generateTopAlbums = async () => {
     try {
@@ -16,18 +17,25 @@ function App() {
       throw error;
     }
   };
+  const generateNewAlbums = async () => {
+    try {
+      const data = await fetchNewAlbums();
+      setNewAlbums(data);
+    } catch (error) {
+      throw error;
+    }
+  };
   useEffect(() => {
     generateTopAlbums();
+    generateNewAlbums();
   }, []);
   return (
     <>
       <Navbar />
       <Hero />
       <div>
-        <CategoryHeading children="Top Albums" />
-        {topAlbums?.map((album) => (
-          <Card data={album} type="album" key={album.id} />
-        ))}
+        <Section data={topAlbums} type="album" title="Top Albums" />
+        <Section data={newAlbums} type="album" title="New Albums" />
       </div>
     </>
   );
