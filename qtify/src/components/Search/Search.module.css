@@ -3,6 +3,18 @@
   align-items: stretch;
   height: 48px;
 }
+.results {
+  /* border: 1px solid var(--color-primary);
+  border-radius: 0 0 10px 10px;
+  position: absolute;
+  top: 73px;
+  z-index: 5;
+  overflow-y: scroll;
+  width: 722px;
+  max-height: 451px;
+  background-color: var(--color-black);
+  scroll-behavior: smooth; */
+}
 
 .search {
   padding: 14px 20px;
@@ -19,4 +31,12 @@
   border: 1px solid var(--color-black);
   border-left: none;
   cursor: pointer;
+}
+
+.searchContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 200px;
+  border: none;
 }

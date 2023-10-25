@@ -4,6 +4,9 @@ import "./index.css";
 import Hero from "./components/HeroSection/Hero";
 import { fetchNewAlbums, fetchSongs, fetchTopAlbums } from "./apis/api";
 import Section from "./components/common/Section/Section";
+import Faq from "./components/Faq/Faq";
+import HorizontalLine from "./components/common/HorizontalLine/HorizontalLine";
+import AudioPlayer from "./components/AudioPlayer/AudioPlayer";
 
 function App() {
   const [topAlbums, setTopAlbums] = useState([]);
@@ -11,6 +14,10 @@ function App() {
   const [allSongs, setAllSongs] = useState([]);
   const [filteredSongs, setFilteredSongs] = useState([]);
   const [value, setValue] = useState(0);
+
+  // Variables
+  const allData = [...topAlbums, ...newAlbums, ...allSongs];
+  console.log("adhkfhi", allData);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -76,7 +83,7 @@ function App() {
   }, [value]);
   return (
     <>
-      <Navbar />
+      <Navbar data={allData} />
       <Hero />
       <div className="wrapper">
         <Section data={topAlbums} type="album" title="Top Albums" />
@@ -95,6 +102,9 @@ function App() {
           />
         </div>
       </div>
+      <Faq />
+      <HorizontalLine />
+      <AudioPlayer />
     </>
   );
 }

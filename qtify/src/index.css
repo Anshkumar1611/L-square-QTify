@@ -19,6 +19,7 @@ body {
   font-family: "Poppins", sans-serif;
   color: var(--color-white);
   overflow-x: hidden;
+  /* position: relative; */
 }
 
 img,
