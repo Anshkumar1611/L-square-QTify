@@ -1,21 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { useSwiper } from "swiper/react";
-import { Swiper } from "swiper/types";
+import { Swiper } from "swiper/react";
 import styles from "./Carousel.module.css";
 import { ReactComponent as RightArrow } from "../../../assets/rightNavigation.svg";
 
 const CarouselRightNavigation = () => {
   const swiper = useSwiper();
-  console.log(swiper);
-  const [isEnd, setIsEnd] = useState(Swiper.isBeginning);
+  const [isEnd, setIsEnd] = useState(Swiper.isEnd);
 
   useEffect(() => {
     swiper.on("slideChange", function () {
       setIsEnd(swiper.isEnd);
     });
-  }, [isEnd, swiper, swiper.isBeginning]);
+  }, [isEnd, swiper, swiper.isEnd]);
   return (
-    <div className={styles.leftNavigation}>
+    <div className={styles.rightNavigation}>
       {!isEnd && <RightArrow onClick={() => swiper.slideNext()} />}
     </div>
   );

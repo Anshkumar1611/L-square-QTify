@@ -8,7 +8,7 @@ import AlbumImage from "./AlbumImage/AlbumImage";
 const Card = ({ data, type }) => {
   const getCard = (type) => {
     switch (type) {
-      case "album":
+      case "album": {
         const { image, follows, title, songs } = data;
         return (
           <Tooltip title={`${songs.length}`} placement="top" arrow>
@@ -16,16 +16,32 @@ const Card = ({ data, type }) => {
               <div className={styles.banner}>
                 <AlbumImage image={image} />
                 <div className={styles.follows}>
-                  <Chip follows={follows} />
+                  <Chip children={follows} />
                 </div>
               </div>
-              <div className={styles.title}>
+              <div>
                 <CardTitle title={title} />
               </div>
             </div>
           </Tooltip>
         );
-
+      }
+      case "songs": {
+        const { image, likes, title } = data;
+        return (
+          <div className={styles.wrapper}>
+            <div className={styles.banner}>
+              <AlbumImage image={image} />
+              <div className={styles.follows}>
+                <Chip children={likes} songs />
+              </div>
+            </div>
+            <div>
+              <CardTitle title={title} />
+            </div>
+          </div>
+        );
+      }
       default:
         return <></>;
     }

@@ -26,3 +26,23 @@ svg {
   display: block;
   max-width: 100%;
 }
+
+.swiper-slide {
+  width: auto !important;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 30px;
+}
+
+.section {
+  border-top: 1px solid var(--color-primary);
+  border-bottom: 1px solid var(--color-primary);
+}
+
+.css-19kzrtu {
+  padding: 0 !important;
+}

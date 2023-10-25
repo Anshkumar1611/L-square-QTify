@@ -19,3 +19,20 @@ export const fetchNewAlbums = async () => {
     return error.response;
   }
 };
+
+export const fetchSongs = async () => {
+  try {
+    const res = await axios.get(`${BACKEND_ENDPOINT}/songs`);
+    return res.data;
+  } catch (error) {
+    return error.response;
+  }
+};
+export const fetchGenres = async () => {
+  try {
+    const res = await axios.get(`${BACKEND_ENDPOINT}/genres`);
+    return res.data;
+  } catch (error) {
+    return error.response;
+  }
+};
