@@ -6,19 +6,35 @@ import SearchResults from "./SearchResults/SearchResults";
 const Search = ({ data }) => {
   const [value, setValue] = useState("");
   const [filteredData, setFilteredData] = useState([]);
+  const [selectValue, setSelectValue] = useState("");
+
+  const handleValueChange = (title) => {
+    setSelectValue(title);
+  };
+
   const onSubmit = (e) => {
-    console.log("hi");
     e.preventDefault();
   };
   const handleChange = (e) => {
-    const inputValue = e.target.value;
-    setValue(inputValue);
-    console.log(inputValue);
+    let inputValue;
+    // if (selectValue !== "") {
+    //   inputValue = selectValue;
+    // } else {
+    // }
+    if (selectValue) {
+      inputValue = selectValue;
+    }
+    inputValue = e.target.value;
+    setValue(() => inputValue);
+    console.log(value);
   };
 
   const getFilteredData = (data, value) => {
+    const searchTerm = value.toLowerCase();
     const allData = [...data];
-    let updatedData = allData.filter((item) => item.title.includes(value));
+    let updatedData = allData.filter((item) =>
+      item.title.toLowerCase().includes(searchTerm)
+    );
     setFilteredData(updatedData);
   };
 
@@ -29,16 +45,24 @@ const Search = ({ data }) => {
     <div className={styles.searchContainer}>
       <form className={styles.wrapper} onSubmit={onSubmit}>
         <input
+          name="name"
+          id="name"
+          value={value}
           className={styles.search}
           placeholder="Search a album of your choice"
-          onChange={handleChange}
+          onChange={(e) => handleChange(e)}
         />
         <button className={styles.searchButton}>
           <SearchIcon />
         </button>
       </form>
-      <div className={value ? styles.results : ""}>
-        {value ? <SearchResults filteredData={filteredData} /> : null}
+      <div className={`${value} ? ${styles.results} : ""`}>
+        {value ? (
+          <SearchResults
+            filteredData={filteredData}
+            handleValueChange={handleValueChange}
+          />
+        ) : null}
       </div>
     </div>
   );

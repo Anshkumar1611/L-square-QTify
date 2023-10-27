@@ -11,7 +11,7 @@ const Accordion = ({ item }) => {
     <div className={styles.wrapper}>
       <div key={item.index} className={styles.accordionContainer}>
         <div className={styles.accordionWrapper} onClick={toggleAccordion}>
-          <p className={styles.title}>{item.title}</p>
+          <p className={`${styles.title} `}>{item.title}</p>
           <AccordionIcon
             className={`${styles.icon} ${styles.arrow} ${
               isAccordionOpen ? `${styles.open}` : ""
@@ -19,7 +19,11 @@ const Accordion = ({ item }) => {
           />
         </div>
         {isAccordionOpen && (
-          <div className={styles.description}>{item.description}</div>
+          <div
+            className={`${styles.description} ${styles.accordionContentWrapper}`}
+          >
+            {item.description}
+          </div>
         )}
       </div>
       <div className={styles.line}></div>

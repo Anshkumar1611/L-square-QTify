@@ -13,7 +13,7 @@ export const accordionData = [
     index: 0,
     title: "Is QTify free to use?",
     description:
-      "Sorry, unfortunately we don't provide the service to download any songs.",
+      "Sorry, unfortunately we don't provide the service free for any songs.",
   },
   {
     index: 1,

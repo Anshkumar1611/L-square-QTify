@@ -40,18 +40,34 @@
   line-height: 27px;
 }
 
-.arrow {
-  transition: transform 0.3s; /* Add a transition for a smooth rotation effect */
+@keyframes scrollIn {
+  from {
+    transform: translateY(-10%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
-/* Add styles for the open state */
-.open {
+/* Apply the animation to the accordion content */
+.accordionContentWrapper {
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
+  animation-name: scrollIn;
+  animation-fill-mode: both;
+  transform-origin: top;
+  opacity: 1;
+}
+
+/* Hide the content by default */
+.accordionContentWrapper:not(.open) {
+  overflow: hidden;
+  opacity: 0;
+}
+
+/* Rotate the arrow icon for an open accordion */
+.arrow.open {
   transform: rotate(180deg);
 }
-
-/* Add styles for the closed state */
-.accordionContainer:not(.open) .arrow {
-  transform: rotate(0deg);
-}
-
-

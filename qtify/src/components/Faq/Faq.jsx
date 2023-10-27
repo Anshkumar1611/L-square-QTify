@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Accordion from "../common/Accordion/Accordion";
 import styles from "./Faq.module.css";
 import { accordionData } from "../../Constant";
