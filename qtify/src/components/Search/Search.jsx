@@ -6,27 +6,17 @@ import SearchResults from "./SearchResults/SearchResults";
 const Search = ({ data }) => {
   const [value, setValue] = useState("");
   const [filteredData, setFilteredData] = useState([]);
-  const [selectValue, setSelectValue] = useState("");
 
   const handleValueChange = (title) => {
-    setSelectValue(title);
+    setValue(title);
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
   };
   const handleChange = (e) => {
-    let inputValue;
-    // if (selectValue !== "") {
-    //   inputValue = selectValue;
-    // } else {
-    // }
-    if (selectValue) {
-      inputValue = selectValue;
-    }
-    inputValue = e.target.value;
-    setValue(() => inputValue);
-    console.log(value);
+    let inputValue = e.target.value;
+    setValue(inputValue);
   };
 
   const getFilteredData = (data, value) => {
